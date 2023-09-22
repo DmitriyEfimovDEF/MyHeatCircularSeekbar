@@ -12,7 +12,7 @@
         android:theme="@style/Theme.CircularSeekbar"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name="net.myheat.circularseekbar.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.CircularSeekbar">
             <intent-filter>

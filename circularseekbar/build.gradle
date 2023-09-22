@@ -1,12 +1,10 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id 'maven-publish'
-    id 'signing'
 }
 
 android {
-    namespace 'io.github.ningyuv.circularseekbar'
+    namespace 'net.myheat.circularseekbar'
     compileSdk 33
 
     defaultConfig {
@@ -36,7 +34,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.4.0'
+        kotlinCompilerExtensionVersion '1.4.8'
     }
     packagingOptions {
         resources {
@@ -53,69 +51,15 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.compose.material3:material3:1.1.0-alpha06'
+    implementation 'androidx.compose.material3:material3:1.2.0-alpha02'
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
-}
-
-publishing {
-    publications {
-        release(MavenPublication) {
-            pom {
-                name = 'CircularSeekBar'
-                description = 'A circular SeekBar with Jetpack Compose'
-                url = 'https://github.com/ningyuv/CircularSeekBar'
-
-                licenses {
-                    license {
-                        name = 'The Apache License, Version 2.0'
-                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-
-                developers {
-                    developer {
-                        id = 'ningyuv'
-                        name = 'ningyuv'
-                        email = 'ningyuv@outlook.com'
-                    }
-                }
-
-                scm {
-                    connection = 'https://github.com/ningyuv/CircularSeekBar.git'
-                    developerConnection = 'https://github.com/ningyuv/CircularSeekBar.git'
-                    url = 'https://github.com/ningyuv/CircularSeekBar'
-                }
-            }
-
-            groupId "io.github.ningyuv"
-            artifactId "circular-seek-bar"
-            version "$lib_version"
-
-            afterEvaluate {
-                from components.release
-            }
-        }
-    }
-    repositories {
-        maven {
-            name = "OSSRH"
-            url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-            credentials {
-                username = ossrhUsername
-                password = ossrhPassword
-            }
-        }
-    }
-}
-
-signing {
-    sign publishing.publications.release
 }
